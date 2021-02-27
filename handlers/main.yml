@@ -2,5 +2,7 @@
 
 - name: Persist rules
   command:
-    cmd: "/usr/sbin/service {{ iptables_save_service }} save"
+    #cmd: "/usr/sbin/service {{ iptables_save_service }} save"
+    cmd: echo Hello world
     warn: false
+    changed: no

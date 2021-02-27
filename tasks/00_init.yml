@@ -4,16 +4,22 @@
   package:
     name: iptables
     state: present
+  tags:
+    - never
 
 - name: Install package to persist iptables rules
   package:
     name: "{{ iptables_save_package }}"
     state: present
+  tags:
+    - never
 
 - name: Make iptables persistance service start at boot
   service:
     name: "{{ iptables_save_service }}"
     enabled: true
+  tags:
+    - never
 
 - name: Firewall rule - create ban chain
   iptables_raw:
