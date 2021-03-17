@@ -2,8 +2,6 @@
 
 - name: Set OS family dependent variables
   include_vars: "{{ ansible_facts.os_family }}.yml"
-  tags:
-    - never
 
 - import_tasks: 00_init.yml
   tags: init

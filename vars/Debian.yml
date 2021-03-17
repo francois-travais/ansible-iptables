@@ -1,4 +1,5 @@
 ---
 
+iptables_save_local_service: no
 iptables_save_package: iptables-persistent
 iptables_save_service: netfilter-persistent

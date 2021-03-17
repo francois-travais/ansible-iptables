@@ -1,0 +1,5 @@
+---
+
+iptables_save_local_service: yes
+iptables_save_package: no
+iptables_save_service: iptables

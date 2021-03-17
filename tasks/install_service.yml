@@ -1,0 +1,25 @@
+---
+
+- name: Create iptables scripts folder
+  file:
+    path: /usr/libexec/iptables
+    user: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Install iptables save script
+  copy:
+    src: iptables.init
+    dest: /usr/libexec/iptables/iptables.init
+    user: root
+    group: root
+    mode: 0755
+
+- name: Install systemd iptables save service
+  copy:
+    src: iptables.service
+    dest: /usr/lib/systemd/system/iptables.service
+    user: root
+    group: root
+    mode: 0644
