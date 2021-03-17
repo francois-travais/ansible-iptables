@@ -3,7 +3,7 @@
 - name: Create iptables scripts folder
   file:
     path: /usr/libexec/iptables
-    user: root
+    owner: root
     group: root
     mode: 0755
     state: directory
@@ -12,7 +12,7 @@
   copy:
     src: iptables.init
     dest: /usr/libexec/iptables/iptables.init
-    user: root
+    owner: root
     group: root
     mode: 0755
 
@@ -20,6 +20,6 @@
   copy:
     src: iptables.service
     dest: /usr/lib/systemd/system/iptables.service
-    user: root
+    owner: root
     group: root
     mode: 0644
