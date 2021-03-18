@@ -2,5 +2,9 @@
 
 - name: Install iptables save script
   shell:
-    cmd: transactional-update -n -d shell
+    cmd: transactional-update -n -d --no-self-update shell
     stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
+  notify: Reboot
+
+# Force reboot now
+- meta: flush_handlers

@@ -6,3 +6,6 @@
     cmd: echo Hello world
     warn: false
     changed: no
+
+- name: Reboot
+  reboot:
