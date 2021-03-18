@@ -1,25 +1,6 @@
 ---
 
-- name: Create iptables scripts folder
-  file:
-    path: /usr/libexec/iptables
-    owner: root
-    group: root
-    mode: 0755
-    state: directory
-
 - name: Install iptables save script
-  copy:
-    src: iptables.init
-    dest: /usr/libexec/iptables/iptables.init
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Install systemd iptables save service
-  copy:
-    src: iptables.service
-    dest: /usr/lib/systemd/system/iptables.service
-    owner: root
-    group: root
-    mode: 0644
+  shell:
+    cmd: transactional-update -n -d shell
+    stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
