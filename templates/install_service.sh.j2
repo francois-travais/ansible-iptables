@@ -2,17 +2,15 @@
 
 set -o errexit
 set -o pipefail
+set -o nounset
+set -o xtrace
 
 install -d -m 0755 -o root -g root /usr/libexec/iptables
 
-cat <<EOF >/usr/libexec/iptables/iptables.init
-{{ lookup('file', 'iptables.init') }}
-EOF
+echo '{{ lookup("file", "iptables.init") | regex_replace("'", "\'") }}' >/usr/libexec/iptables/iptables.init
 chmod 0755 /usr/libexec/iptables/iptables.init
 chown root:root /usr/libexec/iptables/iptables.init
 
-cat <<EOF >/usr/lib/systemd/system/iptables.service
-{{ lookup('file', 'iptables.service') }}
-EOF
+echo '{{ lookup('file', 'iptables.service') | regex_replace("'", "\'") }}' >/usr/lib/systemd/system/iptables.service
 chmod 0644 /usr/lib/systemd/system/iptables.service
 chown root:root /usr/lib/systemd/system/iptables.service

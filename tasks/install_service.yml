@@ -1,8 +1,11 @@
 ---
 
+- debug:
+    msg: "{{ lookup('template', 'install_service.sh.j2') }}"
+
 - name: Install iptables save script
   shell:
-    cmd: transactional-update -n -d --no-selfupdate shell
+    cmd: transactional-update -c -n -d --no-selfupdate shell
     stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
   notify: Reboot
 
