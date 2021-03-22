@@ -1,10 +1,7 @@
 ---
 
-- debug:
-    msg: "{{ lookup('template', 'install_service.sh.j2') }}"
-
 - name: Install iptables save script
-  command:
+  shell:
     cmd: transactional-update -c -n -d --no-selfupdate shell
     stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
     creates: /usr/lib/systemd/system/iptables.service
