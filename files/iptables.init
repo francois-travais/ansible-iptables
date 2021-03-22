@@ -58,6 +58,14 @@ IPTABLES_RESTORE_WAIT_INTERVAL=1000000
 # it should be reserved for SELinux use
 NF_TABLES="raw mangle filter nat"
 
+success() {
+  echo SUCCESS
+}
+
+failure() {
+  echo FAILURE
+}
+
 flush_n_delete() {
   # Flush firewall rules and delete chains.
   echo -n $"${IPTABLES}: Flushing firewall rules: "
