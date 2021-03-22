@@ -4,9 +4,10 @@
     msg: "{{ lookup('template', 'install_service.sh.j2') }}"
 
 - name: Install iptables save script
-  shell:
+  command:
     cmd: transactional-update -c -n -d --no-selfupdate shell
     stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
+    creates: /usr/lib/systemd/system/iptables.service
   notify: Reboot
 
 # Force reboot now
