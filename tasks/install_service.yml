@@ -7,5 +7,5 @@
     creates: /usr/lib/systemd/system/iptables.service
   notify: Reboot
 
-# Force reboot now
+# Force reboot now to use the new layer
 - meta: flush_handlers
