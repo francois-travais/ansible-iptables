@@ -1,7 +1,7 @@
 ---
 
 - name: Persist rules
-  command:
+  ansible.builtin.command:
     cmd: "/usr/sbin/service {{ iptables_save_service }} save"
     warn: false
     changed: no

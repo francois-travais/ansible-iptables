@@ -1,7 +1,7 @@
 ---
 
 - name: Install iptables save script
-  shell:
+  ansible.builtin.command:
     cmd: transactional-update -c -n -d --no-selfupdate shell
     stdin: "{{ lookup('template', 'install_service.sh.j2') }}"
     creates: /usr/lib/systemd/system/iptables.service

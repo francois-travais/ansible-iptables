@@ -15,8 +15,13 @@ install -d -m 0755 -o root -g root /usr/libexec/initscripts/legacy-actions/iptab
 
 echo '#!/bin/bash
 exec /usr/libexec/iptables/iptables.init save' >/usr/libexec/initscripts/legacy-actions/iptables/save
+chmod 0755 /usr/libexec/initscripts/legacy-actions/iptables/save
+chown root:root /usr/libexec/initscripts/legacy-actions/iptables/save
+
 echo '#!/bin/bash
 exec /usr/libexec/iptables/iptables.init panic' >/usr/libexec/initscripts/legacy-actions/iptables/panic
+chmod 0755 /usr/libexec/initscripts/legacy-actions/iptables/panic
+chown root:root /usr/libexec/initscripts/legacy-actions/iptables/panic
 
 echo '{{ lookup('file', 'iptables.service') | regex_replace("'", "\'") }}' >/usr/lib/systemd/system/iptables.service
 chmod 0644 /usr/lib/systemd/system/iptables.service
